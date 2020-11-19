@@ -1,0 +1,1 @@
+I am making a game "Alien Invasion" from the "Python Crash Course" book, with the goal of learning the Python programming language.
