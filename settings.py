@@ -1,5 +1,5 @@
 class Settings():
-    """Class for storing all settings."""
+    """Class for storing all settings of the game 'Alien Invasion'."""
 
     def __init__(self):
         """Initializes game settings."""
