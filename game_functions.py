@@ -20,13 +20,11 @@ def check_events(ship):
                 ship.moving_left = False
 
 
-
 def update_screen(ai_settings, screen, ship):
-    """Refreshes the screen images and displays the new screen."""
+    """ Refreshes the screen images and displays the new screen. """
     # The screen is redrawn at each pass of the loop.
     screen.fill(ai_settings.bg_color)
     ship.blitme()
 
     # Displays the last drawn screen.
     pygame.display.flip()
-
