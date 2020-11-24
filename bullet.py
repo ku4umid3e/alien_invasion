@@ -19,3 +19,14 @@ class Bullet(Sprite):
 
         self.color = ai_settings.bullet_color
         self.speed_factor = ai_settings.bullet_speed_factor
+
+    def update(self):
+        """Moves the bullet up the screen."""
+        # Updating bullet position in real format.
+        self.y -= self.speed_factor
+        # Updating the positionof the rectangle.
+        self.rect.y = self.y
+
+    def draw_bullet(self):
+        """Displaying a bullet on the screen."""
+        pygame.draw.rect.(self.screen, self.color, self.rect)
