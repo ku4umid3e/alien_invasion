@@ -51,5 +51,5 @@ def update_bullets(bullets):
     bullets.update()
     # Removind bullets that go off the edge of screen
     for bullet in bullets.copy():
-        if bullets.rect.bottom <= 0:
+        if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
