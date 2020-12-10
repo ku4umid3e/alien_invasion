@@ -12,16 +12,21 @@ def chek_keydown_events(event, ai_settings, screen, ship, bullets):
     elif event.key == pygame.K_LEFT:
         ship.moving_left = True
     elif event.key == pygame.K_SPACE:
-        # Create a new bullet and it to the bullets group.
-        if len(bullets) < ai_settings.bullets_allowed:
-            new_bullet = Bullet(ai_settings, screen, ship)
-            bullets.add(new_bullet)
+        fire_bullet(ai_settings, screen, ship, bullets)
+
+
+def fire_bullet(ai_settings, screen, ship, bullets):
+    # Create a new bullet and it to the bullets group.
+    if len(bullets) < ai_settings.bullets_allowed:
+        new_bullet = Bullet(ai_settings, screen, ship)
+        bullets.add(new_bullet)
+
 
 def chek_keyup_events(event, ship):
-     if event.key == pygame.K_RIGHT:
-         ship.moving_right = False
-     elif event.key == pygame.K_LEFT:
-         ship.moving_left = False
+    if event.key == pygame.K_RIGHT:
+        ship.moving_right = False
+    elif event.key == pygame.K_LEFT:
+        ship.moving_left = False
 
 
 def check_events(ai_settings, screen, ship, bullets):
@@ -34,6 +39,7 @@ def check_events(ai_settings, screen, ship, bullets):
         elif event.type == pygame.KEYUP:
             chek_keyup_events(event, ship)
 
+
 def update_screen(ai_settings, screen, ship, bullets):
     """ Refreshes the screen images and displays the new screen. """
     # The screen is redrawn at each pass of the loop.
@@ -44,6 +50,7 @@ def update_screen(ai_settings, screen, ship, bullets):
 
     # Displays the last drawn screen.
     pygame.display.flip()
+
 
 def update_bullets(bullets):
     """Updates bullet positions and destroys aold bullets. """
