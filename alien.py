@@ -16,7 +16,7 @@ class Alien(Sprite):
 
         # Every new alien appears in the upper left cornerof the screen.
         self.rect.x = self.rect.width
-        self.rect.y = self.rect.heigth
+        self.rect.y = self.rect.height
 
         # Keeping exact position of the alien
         self.x = float(self.rect.x)
@@ -24,4 +24,3 @@ class Alien(Sprite):
     def blitme(self):
         """ Takes the alien in given position."""
         self.screen.blit(self.image, self.rect)
-
