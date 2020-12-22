@@ -3,6 +3,7 @@ import sys
 import pygame
 
 from bullet import Bullet
+from alien import Alien
 
 
 def chek_keydown_events(event, ai_settings, screen, ship, bullets):
@@ -42,14 +43,14 @@ def check_events(ai_settings, screen, ship, bullets):
             chek_keyup_events(event, ship)
 
 
-def update_screen(ai_settings, screen, ship, alien, bullets):
+def update_screen(ai_settings, screen, ship, aliens, bullets):
     """ Refreshes the screen images and displays the new screen. """
     # The screen is redrawn at each pass of the loop.
     screen.fill(ai_settings.bg_color)
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
-    alien.blitme()
+    aliens.draw(screen)
 
     # Displays the last drawn screen.
     pygame.display.flip()
@@ -63,3 +64,21 @@ def update_bullets(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+
+def create_fleet(ai_settings, screen, aliens):
+    """ Created fleet aliens"""
+    # Created alien and calculating the number of aliens in a row.
+    # The interval between aliens is equal to one alien.
+
+    alien = Alien(ai_settings, screen)
+    alien_width = alien.rect.width
+    available_space_x = ai_settings.screen_width - 2 * alien_width
+    number_aliens_x = int(available_space_x / (2* alien_width))
+
+    # Created of the first row of alien.
+    for alien_number in range(number_aliens_x):
+        # Creating an alien and placing it in a row.
+        alien = Alien(ai_settings, screen)
+        alien.x = alien_width + 2 * alien_width * alien_number
+        alien.rect.x = alien.x
+        aliens.add(alien)
