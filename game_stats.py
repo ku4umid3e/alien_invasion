@@ -7,7 +7,8 @@ class GameStats():
         """Initializes statistics."""
         self.ai_settings = ai_settings
         self.reset_stats()
-
+        # Game "Alien Invasion" starts in active mode.
+        self.game_active = True
 
     def reset_stats(self):
         """Initializes statistics that change during the game."""
