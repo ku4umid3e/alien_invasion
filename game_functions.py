@@ -7,7 +7,7 @@ from bullet import Bullet
 from alien import Alien
 
 
-def chek_keydown_events(event, ai_settings, screen, ship, bullets):
+def chek_keydown_events(event, ai_settings, screen, stats, ship, aliens, bullets):
     """ Reacts to keystrokes."""
     if event.key == pygame.K_RIGHT:
         ship.moving_right = True
@@ -17,6 +17,10 @@ def chek_keydown_events(event, ai_settings, screen, ship, bullets):
         fire_bullet(ai_settings, screen, ship, bullets)
     elif event.key == pygame.K_q:
         sys.exit()
+    elif event.key == pygame.K_p:
+        start_game(ai_settings, screen, stats, ship, aliens, bullets)
+
+
 
 
 def fire_bullet(ai_settings, screen, ship, bullets):
@@ -39,7 +43,7 @@ def check_events(ai_settings, screen, stats, play_button, ship, aliens, bullets)
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            chek_keydown_events(event, ai_settings, screen, ship, bullets)
+            chek_keydown_events(event, ai_settings, screen, stats, ship, aliens, bullets)
         elif event.type == pygame.KEYUP:
             chek_keyup_events(event, ship)
         elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -183,7 +187,13 @@ def check_play_button(ai_settings, screen, stats, play_button, ship,
         aliens, bullets, mouse_x, mouse_y):
     """ Launches a new game when the play button is pressed. """
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
-    if button_clicked and not stats.game_active:
+    if button_clicked:
+        start_game(ai_settings, screen, stats, ship, aliens, bullets)
+
+def start_game(ai_settings, screen, stats, ship, aliens, bullets):
+
+    if not stats.game_active:
+
         # The mouse pointer is hidden.
         pygame.mouse.set_visible(False)
         # Reset game statistics
@@ -197,3 +207,4 @@ def check_play_button(ai_settings, screen, stats, play_button, ship,
         # Create a new fleet and place the ship in the center.
         create_fleet(ai_settings, screen, ship, aliens)
         ship.center_ship()
+
