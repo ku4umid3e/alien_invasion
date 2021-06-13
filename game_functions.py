@@ -197,9 +197,13 @@ def check_play_button(ai_settings, screen, stats, play_button, ship,
 def start_game(ai_settings, screen, stats, ship, aliens, bullets):
 
     if not stats.game_active:
+        
+        # Reset game settings.
+        ai_settings.initialize_dynamic_settings()
 
         # The mouse pointer is hidden.
         pygame.mouse.set_visible(False)
+        
         # Reset game statistics
         stats.reset_stats()
         stats.game_active = True
