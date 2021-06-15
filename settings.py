@@ -37,8 +37,12 @@ class Settings:
         self.ship_speed_factor = 1.5
         self.bullet_speed_factor = 3
         self.alien_speed_factor = 1
+        
         # fleet_direction = 1 indicates movement to the right and -1 to the left
         self.fleet_direction = 1
+        
+        # Scoring.
+        self.alien_points = 50
 
 
     def increase_speed(self):
