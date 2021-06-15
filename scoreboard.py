@@ -5,7 +5,7 @@ class Scoreboard():
     """ Class for displaying game information. """
     def __init__(self, ai_settings, screen, stats):
         """ Initializes scoring attributes."""
-        self.screen = sceen
+        self.screen = screen
         self.screen_rect = screen.get_rect()
         self.ai_settings = ai_settings
         self.stats = stats
