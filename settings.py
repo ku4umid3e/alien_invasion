@@ -27,6 +27,9 @@ class Settings:
 
         # Game accelerration rate.
         self.speedup_scale = 1.1
+        
+        # The rate of growth in the cost aof the aliel
+        self.score_scale = 1.5
 
         self.initialize_dynamic_settings()
 
@@ -46,6 +49,8 @@ class Settings:
 
 
     def increase_speed(self):
+        # Increases the speed and cost of the aliens.
         self.ship_speed_factor *= self.speedup_scale
         self.bullet_speed_factor *= self.speedup_scale
         self.alien_speed_factor *= self.speedup_scale
+        self.alien_points = int(self.alien_points * self.score_scale)
