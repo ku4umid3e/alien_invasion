@@ -39,7 +39,7 @@ class Settings:
         
         self.ship_speed_factor = 1.5
         self.bullet_speed_factor = 3
-        self.alien_speed_factor = 1
+        self.alien_speed_factor = 0.5
         
         # fleet_direction = 1 indicates movement to the right and -1 to the left
         self.fleet_direction = 1
